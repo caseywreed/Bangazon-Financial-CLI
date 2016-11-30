@@ -68,10 +68,10 @@ namespace BangazonFinancials.Factories
             List<Report> ReportList = new List<Report>();
 
             string query = $@"
-            SELECT Product.Name, Product.Price*COUNT(LineItem.ProductId)
+            SELECT Product.Name, Product.Price*COUNT(OrderProduct.ProductId)
             FROM Product
-            JOIN LineItem ON Product.ProductId = LineItem.ProductId
-            JOIN 'Order' O ON LineItem.OrderId = O.OrderId
+            JOIN OrderProduct ON Product.ProductId = OrderProduct.ProductId
+            JOIN 'Order' O ON OrderProduct.OrderId = O.OrderId
             WHERE O.DateCompleted >= datetime('now', '-90 days') AND O.DateCompleted <= datetime('now', 'localtime')
             GROUP BY Product.Name";
             Conn.execute(query, (SqliteDataReader reader) =>
