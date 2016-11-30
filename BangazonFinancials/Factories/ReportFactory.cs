@@ -2,7 +2,6 @@
 using BangazonFinancials.Data;
 using Microsoft.Data.Sqlite;
 using BangazonFinancials.Entities;
-using Microsoft.Data;
 
 namespace BangazonFinancials.Factories
 {
@@ -96,11 +95,11 @@ namespace BangazonFinancials.Factories
             List<Report> ReportList = new List<Report>();
 
             string query = $@"
-            SELECT Customer.FirstName || ' ' || Customer.LastName AS ""Full Name"", SUM(Product.Price)
-            FROM Customer
-            JOIN 'Order' O ON Customer.CustomerId = O.CustomerId
-            JOIN LineItem ON O.OrderId = LineItem.OrderId
-            JOIN Product ON LineItem.ProductId = Product.ProductId
+            SELECT User.FirstName || ' ' || User.LastName AS ""Full Name"", SUM(Product.Price)
+            FROM User
+            JOIN 'Order' O ON User.UserId = O.UserId
+            JOIN OrderProduct ON O.OrderId = OrderProduct.OrderId
+            JOIN Product ON OrderProduct.ProductId = Product.ProductId
             GROUP BY ""Full Name""";
             Conn.execute(query, (SqliteDataReader reader) =>
             {

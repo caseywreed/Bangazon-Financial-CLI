@@ -10,7 +10,7 @@ namespace BangazonFinancials.Actions
         {
             ReportsFactory reportFactory = new ReportsFactory();
 
-            Console.WriteLine("\r\n$$$$$$$$$$$$$$$$$$$$$$$$");
+            Console.WriteLine("\r\n$$$$$$$$$$$$$$$$$$$$$$$$$");
             Console.WriteLine("Weekly Revenue");
             Console.WriteLine("$$$$$$$$$$$$$$$$$$$$$$$$$");
 
